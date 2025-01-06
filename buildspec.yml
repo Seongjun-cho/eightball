@@ -19,10 +19,12 @@ phases:
   pre_build:
     commands:
       #- mvn clean compile test
-      - mvn clean
+      #- mvn clean
+      echo "pre_build"
   build:
     commands:
-      - mvn package
+      #- mvn package
+      echo "build"
   post_build:
     commands:
       ###################################################
@@ -38,6 +40,4 @@ phases:
       #- bash fortify_sast_local_template.bash
       #                                                 #
       ###################################################
-artifacts:
-  files:
-    - 'target/*.war'
+
