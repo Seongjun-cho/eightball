@@ -1,14 +1,14 @@
 version: 0.2
-env:
-  parameter-store:
+#env:
+#  parameter-store:
       ###############################################################
       #           INTEGRATE FORTIFY SCANCENTRAL                     #
-        FCLI_DEFAULT_SC_SAST_CLIENT_AUTH_TOKEN: "new!nectI0n"
-        FCLI_DEFAULT_SSC_USER: "ikkb77"
-        FCLI_DEFAULT_SSC_PASSWORD: "new!nectI0n"
-        FCLI_DEFAULT_SSC_CI_TOKEN: "83e025ab-f18a-4f65-8054-f84fc117585f"
-        FCLI_DEFAULT_SSC_URL: "http://13.209.176.153:8080/ssc/"
-        SSC_APP_VERSION_ID: "3"
+#        FCLI_DEFAULT_SC_SAST_CLIENT_AUTH_TOKEN: "new!nectI0n"
+#        FCLI_DEFAULT_SSC_USER: "ikkb77"
+#        FCLI_DEFAULT_SSC_PASSWORD: "new!nectI0n"
+ #       FCLI_DEFAULT_SSC_CI_TOKEN: "83e025ab-f18a-4f65-8054-f84fc117585f"
+  #      FCLI_DEFAULT_SSC_URL: "http://13.209.176.153:8080/ssc/"
+   #     SSC_APP_VERSION_ID: "3"
 phases:
   install:
     runtime-versions:
