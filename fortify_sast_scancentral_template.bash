@@ -66,7 +66,7 @@ echo Setting connection with Fortify Platform
 fcli ssc session login
 fcli sc-sast session login
 
-scancentral package -bt mvn -o package.zip
+scancentral package -bt none -o package.zip
 
 fcli sc-sast scan start --publish-to=$SSC_APP_VERSION_ID --sensor-version=$SCANCENTRAL_VERSION --package-file=package.zip --store=Id
 
