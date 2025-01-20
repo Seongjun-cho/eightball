@@ -41,7 +41,7 @@ installscancentral() {
   tmpRoot=$(mktemp -d); tmpFile="$tmpRoot/archive.tmp"; tmpDir="$tmpRoot/extracted"
   echo "Downloading file"
   wget -O $tmpFile $src
-  echo "Unzipping: tar -zxf " + $tmpFile + " - d " + $tmpDir
+  echo "Unzipping: tar -zxf " + $tmpFile + " -d " + $tmpDir
   mkdir $tmpDir
   mkdir -p $tgt
   
