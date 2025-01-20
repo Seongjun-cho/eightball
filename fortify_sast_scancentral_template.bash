@@ -13,8 +13,8 @@ ssc_app_version_id=$SSC_APP_VERSION_ID
 # Local variables (modify as needed)
 # FCLI_VERSION=v2.12.0
 SCANCENTRAL_VERSION=24.4.0
-FCLI_URL=http://13.209.176.153:8080/ssc/download/fcli-linux.tgz
-SCANCENTRAL_URL=http://13.209.176.153:8080/ssc/download/Fortify_ScanCentral_Client_24.4.0_x64.zip
+FCLI_URL=http://13.209.176.153:8080/ssc/downloads/fcli-linux.tgz
+SCANCENTRAL_URL=http://13.209.176.153:8080/ssc/downloads/Fortify_ScanCentral_Client_24.4.0_x64.zip
 FCLI_SIG_URL=${FCLI_URL}.rsa_sha256
 SCANCENTRAL_SIG_URL=${SCANCENTRAL_URL}.rsa_sha256
 FORTIFY_TOOLS_DIR="/opt/fortify/tools"	
