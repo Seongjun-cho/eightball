@@ -11,10 +11,12 @@ export FCLI_DEFAULT_SSC_URL=$FCLI_DEFAULT_SSC_URL
 ssc_app_version_id=$SSC_APP_VERSION_ID
 
 # Local variables (modify as needed)
-FCLI_VERSION=v2.12.0
+# FCLI_VERSION=v2.12.0
 SCANCENTRAL_VERSION=24.4.0
-FCLI_URL=https://github.com/fortify-ps/fcli/releases/download/${FCLI_VERSION}/fcli-linux.tgz
+FCLI_URL=http://13.209.176.153:8080/ssc/download/fcli-linux.tgz
+SCANCENTRAL_URL=http://13.209.176.153:8080/ssc/download/Fortify_ScanCentral_Client_24.4.0_x64.zip
 FCLI_SIG_URL=${FCLI_URL}.rsa_sha256
+SCANCENTRAL_SIG_URL=${SCANCENTRAL_URL}.rsa_sha256
 FORTIFY_TOOLS_DIR="/opt/fortify/tools"	
 FCLI_HOME=$FORTIFY_TOOLS_DIR/fcli
 SCANCENTRAL_HOME=$FORTIFY_TOOLS_DIR/ScanCentral	
@@ -52,14 +54,34 @@ installFcli() {
   find $tgt -type f
 }
 
+installscancentral() {
+  local src sigSrc tgt tmpRoot tmpFile tmpDir
+  src="$1"; sigSrc="$2"; tgt="$3"; 
+  tmpRoot=$(mktemp -d); tmpFile="$tmpRoot/archive.tmp"; tmpDir="$tmpRoot/extracted"
+  echo "Downloading file"
+  wget -O $tmpFile $src
+  echo "Verifying Signature..."
+  verifySig "$tmpFile" <(curl -fsSL -o - "$sigSrc")
+  echo "Unzipping: tar -zxf " + $tmpFile + " -C " + $tmpDir
+  mkdir $tmpDir
+  mkdir -p $tgt
+  
+  unzip $tmpFile -C $tmpDir
+  mv $tmpDir/* $tgt
+  chmod +x /$tgt/*
+  rm -rf $tmpRoot
+  find $tgt -type f
+}
+
 # *** Execution ***
 # Install FCLI
 installFcli ${FCLI_URL} ${FCLI_SIG_URL} ${FCLI_HOME}/bin
+installscancentral ${SCANCENTRAL_URL} ${SCANCENTRAL_SIG_URL} ${SCANCENTRAL_HOME}
 
 export PATH=$FCLI_HOME/bin:$SCANCENTRAL_HOME/bin:${PATH}
 
-fcli tool definitions update
-fcli tool sc-client install -v ${SCANCENTRAL_VERSION} -d ${SCANCENTRAL_HOME}
+# fcli tool definitions update
+# fcli tool sc-client install -v ${SCANCENTRAL_VERSION} -d ${SCANCENTRAL_HOME}
 
 echo Setting connection with Fortify Platform
 #Use --insecure switch if the SSL certificate is self generated.
