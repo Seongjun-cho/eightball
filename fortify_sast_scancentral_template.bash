@@ -47,7 +47,7 @@ installscancentral() {
   
   unzip $tmpFile -d $tmpDir
   mv $tmpDir/* $tgt
-  chmod +x /$tgt/*
+  chmod +x $tgt/bin/*
   rm -rf $tmpRoot
   find $tgt -type f
 }
