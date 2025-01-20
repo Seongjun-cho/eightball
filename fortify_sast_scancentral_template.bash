@@ -45,7 +45,7 @@ installscancentral() {
   mkdir $tmpDir
   mkdir -p $tgt
   
-  unzip $tmpFile -C $tmpDir
+  unzip $tmpFile -d $tmpDir
   mv $tmpDir/* $tgt
   chmod +x /$tgt/*
   rm -rf $tmpRoot
