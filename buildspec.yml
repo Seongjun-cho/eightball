@@ -34,8 +34,7 @@ phases:
       #- bash fortify_sast_fod_template.bash
       #                                                 #
       # For FORTIFY SCANCENTRAL uncomment the next line #
-      - SCAN_OUTPUT=$(bash fortify_sast_scancentral_template.bash)
-      - echo "BASH SCRIPT OUTPUT: $SCAN_OUTPUT"
+      - bash fortify_sast_scancentral_template.bash
       #                                                 #
       # For LOCAL FORTIFY SCA uncomment the next line   #
       #- bash fortify_sast_local_template.bash
